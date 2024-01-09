@@ -44,7 +44,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "rest_framework",
     "djoser",
-    "store",
+    "store_app",
     "core",
 ]
 
