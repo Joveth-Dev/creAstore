@@ -7,7 +7,7 @@ User = get_user_model()
 
 
 class Store(models.Model):
-    user = models.OneToOneField(
+    user = models.ForeignKey(
         User, verbose_name=_("Store Owner"), on_delete=models.CASCADE
     )
     name = models.CharField(_("Store Name"), max_length=50, unique=True)

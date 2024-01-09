@@ -1,8 +1,8 @@
-from rest_framework.routers import DefaultRouter
-from .views import StoreViewSet
+from django.urls import path
+from . import views
 
-router = DefaultRouter()
 
-router.register("store", StoreViewSet)
-
-urlpatterns = router.urls
+urlpatterns = [
+    path("store/", views.StoreList.as_view()),
+    path("store/<int:pk>/", views.StoreDetail.as_view()),
+]
