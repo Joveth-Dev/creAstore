@@ -1,30 +1,23 @@
-from rest_framework import generics
+from rest_framework import viewsets
+from rest_framework.permissions import IsAuthenticated
 from .models import Store
 from .permissions import IsOwnerOrReadOnly, IsSuperUser
 from .serializers import StoreSerializer
 
 
-class StoreList(generics.ListCreateAPIView):
+class StoreViewSet(viewsets.ModelViewSet):
     serializer_class = StoreSerializer
-
-    def get_queryset(self):
-        # return all stores for superusers
-        if self.request.user.is_superuser:
-            queryset = Store.objects.select_related("user")
-        # return user's own stores
-        else:
-            queryset = Store.objects.select_related("user").filter(
-                user=self.request.user.id
-            )
-        return queryset
+    queryset = Store.objects.select_related("user")
 
     def get_serializer_context(self):
         return {"user_id": self.request.user.id}
 
-
-class StoreDetail(generics.RetrieveUpdateDestroyAPIView):
-    queryset = Store.objects.select_related("user")
-    serializer_class = StoreSerializer
-    # here I used bitwise OR (|) to allow owners to update or delete thier store
-    # while superusers can update or delete any store
-    permission_classes = [IsOwnerOrReadOnly | IsSuperUser]
+    def get_permissions(self):
+        permission_classes = [IsAuthenticated]
+        if self.action in ("retrieve", "update", "partial_update", "delete"):
+            permission_classes += [IsOwnerOrReadOnly | IsSuperUser]
+        elif self.action == "list":
+            if not self.request.user.is_superuser:
+                # if not superuser filter list showing only their own stores
+                self.queryset = super().get_queryset().filter(user=self.request.user.id)
+        return [permission() for permission in permission_classes]
