@@ -19,9 +19,13 @@ A Simple API that allows user to create and manage their own stores.
 
 ## Installation
 
-**The project is Dockerized.** To get up and running quickly, run it using Docker, make sure you have Docker installed first and then run:
+**The project is Dockerized.** To get up and running, clone this repository and `cd` in the cloned **creAstore** directory. Make sure you have Docker installed first and then run:
 
-    docker compose up --build
+    docker compose up --build -d
+
+- Then you can create a superuser and explore all features by following the prompts when you run:
+
+  docker-compose run server python manage.py createsuperuser
 
 
 **Installation for Development**
