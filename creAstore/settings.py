@@ -210,3 +210,11 @@ JET_SIDE_MENU_ITEMS = [
         ],
     },
 ]
+
+# to prevent warnings about django 6.0 RemovedInDjango60Warning
+from warnings import filterwarnings
+
+filterwarnings(
+    "ignore", "The FORMS_URLFIELD_ASSUME_HTTPS transitional setting is deprecated."
+)
+FORMS_URLFIELD_ASSUME_HTTPS = True
