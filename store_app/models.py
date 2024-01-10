@@ -32,7 +32,7 @@ class Store(models.Model):
         validators=[
             RegexValidator(
                 regex=r"^\+?(?:63)?(?:\d{10}|\d{11})$",
-                message="Enter a valid Philippine phone number.",
+                message="Enter a valid phone number.",
             )
         ],
         blank=True,

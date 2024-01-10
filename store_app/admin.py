@@ -8,8 +8,9 @@ from .models import Store, StoreType
 
 @admin.register(StoreType)
 class StoreTypeAdmin(admin.ModelAdmin):
-    list_display = ["name", "store_count", "created_at"]
+    list_display = ["id", "name", "store_count", "created_at"]
     list_filter = ["created_at"]
+    ordering = ["-created_at"]
     search_fields = ["name"]
 
     def get_queryset(self, request: HttpRequest) -> QuerySet[Any]:
@@ -41,4 +42,5 @@ class StoreAdmin(admin.ModelAdmin):
     list_filter = ["user", "type", "created_at", "open_from", "open_to"]
     list_per_page = 20
     list_select_related = ["user", "type"]
+    ordering = ["-created_at"]
     search_fields = ["user__username", "name", "description"]

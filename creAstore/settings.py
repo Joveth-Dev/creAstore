@@ -44,6 +44,7 @@ INSTALLED_APPS = [
     "debug_toolbar",
     "rest_framework",
     "djoser",
+    "django_filters",
     "store_app",
     "core",
 ]
@@ -145,6 +146,7 @@ REST_FRAMEWORK = {
     # "DEFAULT_PERMISSION_CLASSES": [
     #     "rest_framework.permissions.IsAuthenticated",
     # ],
+    # 'DEFAULT_FILTER_BACKENDS': ['django_filters.rest_framework.DjangoFilterBackend']
 }
 
 SIMPLE_JWT = {
