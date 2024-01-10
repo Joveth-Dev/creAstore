@@ -1,10 +1,28 @@
+from typing import Any
 from django.contrib import admin
+from django.db.models.query import QuerySet
+from django.db.models import Count
+from django.http.request import HttpRequest
 from .models import Store, StoreType
 
 
 @admin.register(StoreType)
 class StoreTypeAdmin(admin.ModelAdmin):
-    list_display = ["name", "created_at"]
+    list_display = ["name", "store_count", "created_at"]
+    list_filter = ["created_at"]
+    search_fields = ["name"]
+
+    def get_queryset(self, request: HttpRequest) -> QuerySet[Any]:
+        return (
+            super()
+            .get_queryset(request)
+            .prefetch_related("store_set")
+            .annotate(store_count=Count("store"))
+        )
+
+    @admin.display(ordering="store_count", description="Stores with this type")
+    def store_count(self, instance: StoreType):
+        return instance.store_count
 
 
 @admin.register(Store)
@@ -20,6 +38,7 @@ class StoreAdmin(admin.ModelAdmin):
         "open_to",
         "created_at",
     ]
-    search_fields = ["user__username", "name"]
+    list_filter = ["user", "type", "created_at", "open_from", "open_to"]
     list_per_page = 20
     list_select_related = ["user", "type"]
+    search_fields = ["user__username", "name", "description"]

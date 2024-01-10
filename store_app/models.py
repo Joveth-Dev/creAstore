@@ -31,7 +31,7 @@ class Store(models.Model):
         max_length=50,
         validators=[
             RegexValidator(
-                regex=r"^\+?63(?:\d{9}|\d{10})$",
+                regex=r"^\+?(?:63)?(?:\d{10}|\d{11})$",
                 message="Enter a valid Philippine phone number.",
             )
         ],
