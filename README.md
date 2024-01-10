@@ -23,9 +23,9 @@ A Simple API that allows user to create and manage their own stores.
 
     docker compose up --build -d
 
-- Then you can create a superuser and explore all features by following the prompts when you run:
+Then you can create a superuser and explore all features by following the prompts when you run:
 
-  docker-compose run server python manage.py createsuperuser
+    docker-compose run server python manage.py createsuperuser
 
 
 **Installation for Development**
