@@ -16,6 +16,8 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from drf_spectacular.views import SpectacularAPIView
+from drf_spectacular.views import SpectacularRedocView, SpectacularSwaggerView
 
 urlpatterns = [
     path("jet/", include("jet.urls", "jet")),
@@ -25,4 +27,18 @@ urlpatterns = [
     path("auth/", include("djoser.urls.jwt")),
     path("store_app/", include("store_app.urls")),
     path("__debug__/", include("debug_toolbar.urls")),
+    # url patterns for API documentation
+    path("api/schema/", SpectacularAPIView.as_view(), name="schema"),
+    # Swagger UI:
+    path(
+        "doc/",
+        SpectacularSwaggerView.as_view(url_name="schema"),
+        name="swagger-ui",
+    ),
+    # Redoc UI:
+    path(
+        "redoc/",
+        SpectacularRedocView.as_view(url_name="schema"),
+        name="redoc",
+    ),
 ]

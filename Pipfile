@@ -17,6 +17,7 @@ django-debug-toolbar = "*"
 pytest-django = "*"
 model-bakery = "*"
 pytest = "*"
+drf-spectacular = "*"
 
 [requires]
 python_version = "3.12"
