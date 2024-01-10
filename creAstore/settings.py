@@ -10,6 +10,7 @@ For the full list of settings and their values, see
 https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
+import os
 from datetime import timedelta
 from pathlib import Path
 from django.contrib.admin import AdminSite
@@ -134,6 +135,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
 STATIC_URL = "static/"
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
 
 # Default primary key field type
 # https://docs.djangoproject.com/en/5.0/ref/settings/#default-auto-field
@@ -158,8 +160,7 @@ SPECTACULAR_SETTINGS = {
     "TITLE": "CREÁSTORE",
     "DESCRIPTION": "A Simple API that allows user to create and manage their own stores.",
     "VERSION": "1.0.0",
-    "SERVE_INCLUDE_SCHEMA": True,
-    # OTHER SETTINGS
+    "SERVE_INCLUDE_SCHEMA": False,
 }
 
 SIMPLE_JWT = {
