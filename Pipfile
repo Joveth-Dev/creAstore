@@ -9,6 +9,8 @@ djangorestframework = "*"
 djoser = "*"
 djangorestframework-simplejwt = "*"
 django-filter = "*"
+django-jet-reboot = "*"
+feedparser = "*"
 
 [dev-packages]
 django-debug-toolbar = "*"

@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "c268c707052e3d631d6e58eb06663b768a63016a534329de1106684ab1860c2c"
+            "sha256": "4470a471b2bebdb31afa9d00bb94755a357bd84d5414ead5a85bbde61aa39c2c"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -241,6 +241,13 @@
             "markers": "python_version >= '3.7'",
             "version": "==23.5"
         },
+        "django-jet-reboot": {
+            "hashes": [
+                "sha256:e1cc40606331539106cae58701bbaf76c0a4486bbe1aee6d85b2f20ce8ad3f71"
+            ],
+            "index": "pypi",
+            "version": "==1.3.7"
+        },
         "django-templated-mail": {
             "hashes": [
                 "sha256:8db807effebb42a532622e2d142dfd453dafcd0d7794c4c3332acb90656315f9",
@@ -274,6 +281,15 @@
             "index": "pypi",
             "markers": "python_version >= '3.8' and python_version < '4.0'",
             "version": "==2.2.2"
+        },
+        "feedparser": {
+            "hashes": [
+                "sha256:0be7ee7b395572b19ebeb1d6aafb0028dee11169f1c934e0ed67d54992f4ad45",
+                "sha256:c9d0407b64c6f2a065d0ebb292c2b35c01050cc0dc33757461aaabdc4c4184d5"
+            ],
+            "index": "pypi",
+            "markers": "python_version >= '3.6'",
+            "version": "==6.0.11"
         },
         "idna": {
             "hashes": [
@@ -335,6 +351,12 @@
             ],
             "markers": "python_version >= '2.7' and python_version not in '3.0, 3.1, 3.2, 3.3'",
             "version": "==1.3.1"
+        },
+        "sgmllib3k": {
+            "hashes": [
+                "sha256:7868fb1c8bfa764c1ac563d3cf369c381d1325d36124933a726f29fcdaa812e9"
+            ],
+            "version": "==1.0.0"
         },
         "social-auth-app-django": {
             "hashes": [

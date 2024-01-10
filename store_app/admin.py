@@ -39,7 +39,7 @@ class StoreAdmin(admin.ModelAdmin):
         "open_to",
         "created_at",
     ]
-    list_filter = ["user", "type", "created_at", "open_from", "open_to"]
+    list_filter = ["open_to", "open_from", "created_at", "type", "user"]
     list_per_page = 20
     list_select_related = ["user", "type"]
     ordering = ["-created_at"]
